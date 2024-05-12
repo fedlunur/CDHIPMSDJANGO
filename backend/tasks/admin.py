@@ -48,7 +48,7 @@ admin.site.register(TaskCard_Attachment,TaskCard_AttachmentAdmin)
 # admin.site.register(TaskAssignment, TaskAssignmentAdmin)    
 class TaskMemberAdmin(admin.ModelAdmin):
      model = Task_Member
-     list_display=['task','assigned_to']
+     list_display=['task','assigned_to','id']
 
     
 admin.site.register(Task_Member, TaskMemberAdmin)

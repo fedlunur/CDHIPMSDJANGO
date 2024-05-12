@@ -85,8 +85,9 @@ class Task_CheckList(models.Model):
    created_at = models.DateTimeField(auto_now_add=True)
    updated_at = models.DateTimeField(auto_now=True)
    def __str__(self) -> str:
-        return self.name + self.task
-
+        return self.name 
+   class Meta:
+        unique_together = ['name', 'status','task']
 
 class TaskCard_Attachment (models.Model):
    name =models.CharField(max_length=100 )

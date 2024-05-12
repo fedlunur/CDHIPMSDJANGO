@@ -27,11 +27,14 @@ class TaskCheckListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task_CheckList
         fields = '__all__'      
+        
+        
+        
 class TaskMemberSerializer(serializers.ModelSerializer):
-    assigned_to = UserSerializer()
-    task = TaskCardSerializer()
-
+    assigned_to_id = serializers.PrimaryKeyRelatedField(source='assigned_to', queryset=User.objects.all())
+    task_id = serializers.PrimaryKeyRelatedField(source='task', queryset=Task_card.objects.all())
+    assigned_to_first_name = serializers.CharField(source='assigned_to.first_name', read_only=True)
     class Meta:
         model = Task_Member
-        fields = '__all__'
+        fields = ['id', 'assigned_to_id', 'assigned_to_first_name','task_id', 'created_at', 'updated_at']
      
